@@ -101,14 +101,14 @@ showCardOnClick = function(clickEvent) {
             var self = $(this);
             for (var i = 0; i < openCards.length; i++) {
                 if (openCards[i].find('i').attr('class') === self.find('i').attr('class')) {
-                    // openCards.push(self);
+                    
                     self.removeClass('animated wobble');
                     self.addClass('show match animated rubberBand');
                     openCards[i].removeClass('animated wobble');
                     openCards[i].addClass('show match animated rubberBand');
                     console.log('match');
                     $(this).off('click');
-                    //openCards.push(self);
+                    
                     openCards = [];
                     break;
                 } else {
@@ -120,7 +120,7 @@ showCardOnClick = function(clickEvent) {
             }
         }
         if ($('.deck').find('.match').length === 16) {
-            setTimeout(function() {
+            gameOver(function() {
                 $('.deck').each(function() {
                     swal({
                         title: 'Sweet!',
@@ -156,7 +156,7 @@ $('.restart').on('click', function() {
 
 
 
-
+//credit to https://github.com/ervaibhavkumar/Udacity-Memory-Game/blob/master/css/app.js for helping me figure out how the event listener functions work! This was a tough one!
 
 
 
