@@ -1,33 +1,4 @@
 
-var min = 0;
-var sec = 0;
-var hours = 0;
-var letsStop = 0;
-window.onload = function() {
-    setInterval(function() {
-        if (letsStop !== 1) {
-            sec++;
-            if (sec === 60) {
-                min++;
-                sec = 0;
-            }
-            if (min === 60) {
-                hours++;
-                min = 0;
-                sec = 0;
-            }
-            $('.timer').html(hours + ':' + min + ':' + sec);
-            // if(letsStop === 1)
-            // {
-            //     break;
-            // } 
-            console.log(min);
-            console.log(sec);
-        }
-
-    }, 1000);
-};
-
 /*
  * Create a list that holds all of your cards
  */
@@ -98,8 +69,8 @@ var moves = 0,
 
 removeProperties = function(prop) {
     setTimeout(function() {
-        prop.removeClass('show open animated wobble');
-        openCards[0].removeClass('show open animated wobble');
+        prop.removeClass('show open animated zoomIn');
+        openCards[0].removeClass('show open animated zoomIn');
         openCards = [];
     }, 400);
 };
@@ -121,11 +92,11 @@ showCardOnClick = function(clickEvent) {
         }
         $('.moves').html(moves);
         if ((openCards.length % 2) === 0) {
-            $(this).addClass('show open animated wobble');
+            $(this).addClass('show open animated zoomIn');
             $(this).off('click');
             openCards.push($(this));
         } else if (openCards.length !== 0) {
-            $(this).addClass('show open animated wobble');
+            $(this).addClass('show open animated zoomIn');
 
             var self = $(this);
             for (var i = 0; i < openCards.length; i++) {
@@ -151,29 +122,24 @@ showCardOnClick = function(clickEvent) {
         if ($('.deck').find('.match').length === 16) {
             setTimeout(function() {
                 $('.deck').each(function() {
-                    // $(this).find('li').hide();
                     swal({
-                        title: 'Congratulations',
-                        type: 'success',
-                        text: 'You have won the game . Moves conceded are ' + moves + '. You have got ' + stars + ' Stars Time taken is ' + hours + ' Hours ' + min + ' Minutes and ' + sec + ' Seconds',
+                        title: 'Sweet!',
+                        text: 'You won!',
+                        imageUrl: 'thumbs-up.jpg',
                         allowOutsideClick: false,
                         showCancelButton: true,
-                        confirmButtonText: 'Play Again',
-                        confirmButtonColor: '#0000FF',
-                        cancelButtonText: 'Close',
-                        cancelButtonColor: '#FF0000'
+                        confirmButtonText: 'Retry',
+                        confirmButtonColor: '#00cc00',
+                        cancelButtonText: 'Quit',
+                        cancelButtonColor: '#ff0000'
                     }).then(function() {
                         location.reload();
                     }, function(dismiss) {
-                        console.log('Yes');
+                        console.log('done');
                     });
 
                 });
             }, 300);
-            letsStop = 1;
-            $('.timer').hide();
-            $('.timer').html('0:0:0');
-            $('.timer').show();
         }
 
 
