@@ -1,3 +1,31 @@
+var min = 0;
+var sec = 0;
+var hours = 0;
+var letsStop = 0;
+window.onload = function() {
+    setInterval(function() {
+        if (letsStop !== 1) {
+            sec++;
+            if (sec === 60) {
+                min++;
+                sec = 0;
+            }
+            if (min === 60) {
+                hours++;
+                min = 0;
+                sec = 0;
+            }
+            $('.timer').html(hours + ':' + min + ':' + sec);
+            // if(letsStop === 1)
+            // {
+            //     break;
+            // } 
+            console.log(min);
+            console.log(sec);
+        }
+
+    }, 1000);
+};
 
 /*
  * Create a list that holds all of your cards
@@ -120,26 +148,34 @@ showCardOnClick = function(clickEvent) {
             }
         }
         if ($('.deck').find('.match').length === 16) {
-            gameOver(function() {
+            setTimeout(function() {
                 $('.deck').each(function() {
+                    // $(this).find('li').hide();
                     swal({
                         title: 'Sweet!',
-                        text: 'You won!',
-                        imageUrl: 'thumbs-up.jpg',
+                        type: 'success',
+                        text: 'You won! . You made ' + moves + 'moves. Your rating is: ' + stars + ' Stars. You spent ' + hours + ' Hours ' + min + ' Minutes and ' + sec + ' Seconds on this game',
                         allowOutsideClick: false,
                         showCancelButton: true,
-                        confirmButtonText: 'Retry',
-                        confirmButtonColor: '#00cc00',
-                        cancelButtonText: 'Quit',
-                        cancelButtonColor: '#ff0000'
+                        confirmButtonText: 'Play Again',
+                        confirmButtonColor: '#0000FF',
+                        cancelButtonText: 'Close',
+                        cancelButtonColor: '#FF0000'
                     }).then(function() {
                         location.reload();
                     }, function(dismiss) {
-                        console.log('done');
+                        console.log('Yes');
                     });
+
 
                 });
             }, 300);
+
+
+            letsStop = 1;
+            $('.timer').hide();
+            $('.timer').html('0:0:0');
+            $('.timer').show();
         }
 
 
