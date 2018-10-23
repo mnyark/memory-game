@@ -3,7 +3,7 @@
 ## How to play
 
 * Download or clone the repository on your machine.
-* Open index.html in your browser. OR Click on this [link](mnyark.github.io/memory-game/)
+* Open index.html in your browser. 
 
 ## Rules and Regulations
 
