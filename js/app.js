@@ -7,13 +7,13 @@ window.onload = function() {
         if (letsStop !== 1) {
             sec++;
             if (sec === 60) {
+                sec = 0;
                 min++;
                 sec = 0;
             }
             if (min === 60) {
                 hours++;
                 min = 0;
-                sec = 0;
             }
             $('.timer').html(hours + ':' + min + ':' + sec);
             // if(letsStop === 1)
@@ -150,7 +150,6 @@ showCardOnClick = function(clickEvent) {
         if ($('.deck').find('.match').length === 16) {
             setTimeout(function() {
                 $('.deck').each(function() {
-                    // $(this).find('li').hide();
                     swal({
                         title: 'Sweet!',
                         type: 'success',
