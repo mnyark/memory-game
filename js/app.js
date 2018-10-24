@@ -1,3 +1,5 @@
+
+
 var min = 0;
 var sec = 0;
 var hours = 0;
@@ -153,17 +155,14 @@ showCardOnClick = function(clickEvent) {
                     swal({
                         title: 'Sweet!',
                         type: 'success',
-                        text: 'You won! . You made ' + moves + 'moves. Your rating is: ' + stars + ' Stars. You spent ' + hours + ' Hours ' + min + ' Minutes and ' + sec + ' Seconds on this game',
-                        allowOutsideClick: false,
-                        showCancelButton: true,
+                        text: 'You won! . You made ' + moves + 'moves. Your rating is: ' + stars + ' Star(s). You spent ' + min + ' Minutes and ' + sec + ' Seconds on this game',
                         confirmButtonText: 'Play Again',
                         confirmButtonColor: '#0000FF',
                         cancelButtonText: 'Close',
                         cancelButtonColor: '#FF0000'
                     }).then(function() {
                         location.reload();
-                    }, function(dismiss) {
-                        console.log('Yes');
+        
                     });
 
 
