@@ -14,4 +14,6 @@
 
 ## Good luck!
 
+## Dependencies:
+* Bootstrap sweet alert
 
